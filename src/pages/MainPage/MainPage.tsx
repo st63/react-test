@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 let posts = [
   {
@@ -39,10 +40,18 @@ const MainPage = (props: any) => {
       <ul>{post}</ul>
       <NavLink to="/add-post">
         <div>Добавить запись</div>
-        <div>{props.store.getState}</div>
+        <div>{props.posts.testKey}</div>
       </NavLink>
     </>
   );
 };
 
-export default MainPage;
+let mapStateToProps = (state: any) => {
+	return {
+		posts: state.posts,
+	}
+}
+
+const MainPageContainer = connect(mapStateToProps)(MainPage)
+
+export default MainPageContainer;
