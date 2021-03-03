@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
 import AddPost from "./pages/posts/AddPost";
