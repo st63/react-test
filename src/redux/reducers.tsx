@@ -1,3 +1,5 @@
+const GET_POST = "GET_POST";
+
 let initialState = {
   posts: [
     {
@@ -33,7 +35,23 @@ let initialState = {
 };
 
 const postsReducer = (state = initialState, action: any) => {
-  return state;
+  let stateCopy;
+  switch (action.type) {
+    case GET_POST:
+      stateCopy = {
+			...state,
+			postDetail: state.posts[action.userId - 1],
+      };
+      return stateCopy;
+
+    default:
+      return state;
+  }
 };
+
+export const getPostAction = (userId: any) => ({
+  type: GET_POST,
+  userId,
+});
 
 export default postsReducer;
