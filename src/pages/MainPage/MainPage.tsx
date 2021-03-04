@@ -1,15 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import ShortPost from './ShortPost/ShortPost';
 
 const MainPage = (props: any) => {
-  let post = props.posts.posts.map((p: any) => (
-    <li key={p.id}>
-      <NavLink to={`/post/${p.id}`}>
-        {p.id}
-        {p.title}
-      </NavLink>
-    </li>
+  let post = props.posts.map((p: any) => (
+    <ShortPost key={p.id} id={p.id} title={p.title} />
   ));
   return (
     <>
@@ -22,11 +18,11 @@ const MainPage = (props: any) => {
 };
 
 let mapStateToProps = (state: any) => {
-	return {
-		posts: state.posts,
-	}
-}
+  return {
+    posts: state.posts.posts,
+  };
+};
 
-const MainPageContainer = connect(mapStateToProps)(MainPage)
+const MainPageContainer = connect(mapStateToProps)(MainPage);
 
 export default MainPageContainer;

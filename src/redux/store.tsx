@@ -1,10 +1,8 @@
 import { combineReducers, createStore } from "redux";
-import postsReducer from './posts-reducer';
+import postsReducer from "./reducers";
 
 let reducers = combineReducers({
-	posts: postsReducer,
- });
- 
+  posts: postsReducer,
+});
+
 export let store = createStore(reducers);
- 
- 
