@@ -2,12 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostElement from "../../../components/PostElement";
-import { getPostAction } from "../../../redux/reducers";
 
 const Post = (props: any) => {
-  let userId = props.match.params.postId;
-  props.getPostAction(userId);
-
   return (
     <div>
       <PostElement postDetail={props.postDetail} />
@@ -23,7 +19,7 @@ let mapStateToProps = (state: any) => {
 
 const withRouterWrap = withRouter(Post);
 
-const PostContainer = connect(mapStateToProps, { getPostAction })(
+const PostContainer = connect(mapStateToProps)(
   withRouterWrap
 );
 

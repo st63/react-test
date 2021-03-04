@@ -1,4 +1,5 @@
 const GET_POST = "GET_POST";
+const GET_LIST_POSTS = "GET_LIST_POSTS";
 
 let initialState = {
   posts: [
@@ -39,8 +40,14 @@ const postsReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case GET_POST:
       stateCopy = {
+        ...state,
+        postDetail: action.post,
+      };
+      return stateCopy;
+    case GET_LIST_POSTS:
+		  stateCopy = {
 			...state,
-			postDetail: state.posts[action.userId - 1],
+        posts: action.posts,
       };
       return stateCopy;
 
@@ -48,10 +55,5 @@ const postsReducer = (state = initialState, action: any) => {
       return state;
   }
 };
-
-export const getPostAction = (userId: any) => ({
-  type: GET_POST,
-  userId,
-});
 
 export default postsReducer;
