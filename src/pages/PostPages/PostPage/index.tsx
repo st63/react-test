@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const Post = (props: any) => {
+const PostElement = (props: any) => {
   return (
     <div>
       <div>{props.postDetail.id}</div>
@@ -12,6 +12,12 @@ const Post = (props: any) => {
       <div>{props.postDetail.text}</div>
     </div>
   );
+};
+
+const Post = (props: any) => {
+	return (
+		<div><PostElement postDetail={props.postDetail} /></div>
+	)
 };
 
 let mapStateToProps = (state: any) => {

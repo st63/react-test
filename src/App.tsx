@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import MainPageContainer from "./pages/MainPage/MainPage";
+import MainPageContainer from "./pages/MainPage";
 import AddPost from "./pages/PostPages/AddPostPage";
 import PostContainer from "./pages/PostPages/PostPage";
 import { store } from "./redux/store";

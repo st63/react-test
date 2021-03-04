@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import ShortPost from './ShortPost/ShortPost';
+import ShortPost from './ShortPost';
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
