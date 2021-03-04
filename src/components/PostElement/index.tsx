@@ -5,10 +5,7 @@ const PostElement = (props: any) => {
     <div>
       <div>{props.postDetail.id}</div>
       <div>{props.postDetail.title}</div>
-      <div>{props.postDetail.date}</div>
-      <div>{props.postDetail.autor}</div>
-      <div>{props.postDetail.name}</div>
-      <div>{props.postDetail.text}</div>
+      <div>{props.postDetail.body}</div>
     </div>
   );
 };
