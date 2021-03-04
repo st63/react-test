@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 const PostElement = (props: any) => {
   return (
@@ -15,9 +16,12 @@ const PostElement = (props: any) => {
 };
 
 const Post = (props: any) => {
-	return (
-		<div><PostElement postDetail={props.postDetail} /></div>
-	)
+  let userId = props.match.params.postId;
+  return (
+    <div>
+      <PostElement postDetail={props.postDetail} />
+    </div>
+  );
 };
 
 let mapStateToProps = (state: any) => {
@@ -26,6 +30,8 @@ let mapStateToProps = (state: any) => {
   };
 };
 
-const PostContainer = connect(mapStateToProps)(Post);
+const withRouterWrap = withRouter(Post);
+
+const PostContainer = connect(mapStateToProps)(withRouterWrap);
 
 export default PostContainer;
