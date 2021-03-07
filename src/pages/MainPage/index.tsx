@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import ShortPost from "../../components/ShortPost";
-import { getListPost, getPost } from "../../redux/actions";
+import { getListPost} from "../../redux/actions";
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
-    <ShortPost key={p.id} id={p.id} title={p.title} getPost={props.getPost} />
+    <ShortPost key={p.id} id={p.id} title={p.title} />
   ));
 
   
@@ -31,6 +31,6 @@ let mapStateToProps = (state: any) => {
   };
 };
 
-const MainPageContainer = connect(mapStateToProps, { getListPost, getPost })(MainPage);
+const MainPageContainer = connect(mapStateToProps, { getListPost})(MainPage);
 
 export default MainPageContainer;
