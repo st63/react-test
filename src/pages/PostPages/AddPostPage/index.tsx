@@ -1,25 +1,25 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { addPost } from "../../../redux/actions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 const AddPost = (props: any) => {
   return (
-    <Form
-      onSubmit={(formObj) => {
-			  props.addPost(formObj);
-      }}
-    >
+    <Form onSubmit={props.addPost}>
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <Field name="title">
-            {({ input }) => (
-              <input placeholder="Title" type="title" {...input} />
-            )}
-          </Field>
-          <Field name="body">
-            {({ input }) => <input placeholder="Body" type="text" {...input} />}
-          </Field>
+          <Field
+            name="title"
+            component="input"
+            placeholder="Title"
+            type="text"
+          ></Field>
+          <Field
+            name="body"
+            component="input"
+            placeholder="Body"
+            type="text"
+          ></Field>
           <button type="submit">Submit</button>
         </form>
       )}
