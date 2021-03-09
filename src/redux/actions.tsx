@@ -21,22 +21,22 @@ export const getListPost = () => {
 };
 
 export const addPost = (formObj: any) => {
-	return (dispatch: any) => {
-		axios("https://jsonplaceholder.typicode.com/posts", {
-			method: "POST",
-			data: {
-			  title: formObj.title,
-			  body: formObj.body,
-			  userId: 1,
-			},
-			headers: {
-			  "Content-type": "application/json; charset=UTF-8",
-			},
-		 }).then((response: any) => {
-		  dispatch(addPostAction(response.data));
-		 });
-	};
- };
+  return (dispatch: any) => {
+    axios("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      data: {
+        title: formObj.title,
+        body: formObj.body,
+        userId: 1,
+      },
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response: any) => {
+      dispatch(addPostAction(response.data));
+    });
+  };
+};
 
 export const getPostAction = (post: any) => ({
   type: "GET_POST",
@@ -49,6 +49,6 @@ export const getListPostAction = (posts: any) => ({
 });
 
 export const addPostAction = (post: any) => ({
-	type: "ADD_POST",
-	post,
-})
+  type: "ADD_POST",
+  post,
+});

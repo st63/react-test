@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostElement from "../../../components/PostElement";
 import { getPost } from "../../../redux/actions";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Post = (props: any) => {
-	const postIdFromUrl = props.match.params.postId;
-	const postIdFromState = props.postDetail.id;
+  const postIdFromUrl = props.match.params.postId;
+  const postIdFromState = props.postDetail.id;
 
   React.useEffect(() => {
     props.getPost(postIdFromUrl);
@@ -14,11 +15,9 @@ const Post = (props: any) => {
   }, [postIdFromUrl]);
 
   return postIdFromUrl == postIdFromState ? (
-    <div>
-      <PostElement postDetail={props.postDetail} />
-    </div>
+    <PostElement postDetail={props.postDetail} />
   ) : (
-    <div>Loading</div>
+    <CircularProgress />
   );
 };
 
