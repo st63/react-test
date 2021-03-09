@@ -1,0 +1,21 @@
+.shortPost {
+	list-style-type: none;
+	margin: 15px 0px 15px 0px;
+	border-bottom: 1px solid grey;
+	padding-bottom: 12px;
+}
+
+.link:active,
+.link:hover,
+.link {
+	text-decoration: none;
+	color: #666;
+}
+
+.id {
+	margin-right: 30px;
+}
+
+.title {
+	
+}

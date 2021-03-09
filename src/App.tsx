@@ -5,16 +5,19 @@ import AddPostContainer from "./pages/PostPages/AddPostPage";
 import PostContainer from "./pages/PostPages/PostPage";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import Container from "@material-ui/core/Container";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Switch>
-          <Route path="/post/:postId" component={PostContainer} />
-          <Route path="/add-post" component={AddPostContainer} />
-          <Route path="/" component={MainPageContainer} />
-        </Switch>
+        <Container maxWidth="sm">
+          <Switch>
+            <Route path="/post/:postId" component={PostContainer} />
+            <Route path="/add-post" component={AddPostContainer} />
+            <Route path="/" component={MainPageContainer} />
+          </Switch>
+        </Container>
       </BrowserRouter>
     </Provider>
   );

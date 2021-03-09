@@ -5,9 +5,8 @@ import PostElement from "../../../components/PostElement";
 import { getPost } from "../../../redux/actions";
 
 const Post = (props: any) => {
-	debugger;
-	let postIdFromUrl = props.match.params.postId;
-	let postIdFromState = props.postDetail.id;
+	const postIdFromUrl = props.match.params.postId;
+	const postIdFromState = props.postDetail.id;
 
   React.useEffect(() => {
     props.getPost(postIdFromUrl);

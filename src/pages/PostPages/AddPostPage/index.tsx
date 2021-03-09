@@ -2,25 +2,61 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import { addPost } from "../../../redux/actions";
 import { connect } from "react-redux";
+import { Button } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import s from './index.module.css';
+
+const TitleTextFieldAdapter = ({ input, meta, ...rest }: any) => (
+  <TextField
+    {...input}
+    {...rest}
+    variant="outlined"
+    id="outlined-basic"
+    label="Заголовок"
+    size="small"
+  />
+);
+
+const BodyTextFieldAdapter = ({ input, meta, ...rest }: any) => (
+  <TextField
+    {...input}
+    {...rest}
+    variant="outlined"
+    id="outlined-basic"
+    label="Текст"
+    size="small"
+  />
+);
 
 const AddPost = (props: any) => {
   return (
     <Form onSubmit={props.addPost}>
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <Field
-            name="title"
-            component="input"
-            placeholder="Title"
-            type="text"
-          ></Field>
-          <Field
-            name="body"
-            component="input"
-            placeholder="Body"
-            type="text"
-          ></Field>
-          <button type="submit">Submit</button>
+          <div className={s.field}>
+            <Field
+              name="title"
+              component={TitleTextFieldAdapter}
+              type="text"
+            ></Field>
+          </div>
+          <div className={s.field}>
+            <Field
+              name="body"
+              component={BodyTextFieldAdapter}
+              type="text"
+            ></Field>
+          </div>
+          <div className={s.field}>
+            <Button
+              type="submit"
+              size="small"
+              variant="outlined"
+              color="primary"
+            >
+              Отправить
+            </Button>
+          </div>
         </form>
       )}
     </Form>
