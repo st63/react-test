@@ -5,17 +5,21 @@ import PostElement from "../../../components/PostElement";
 import { getPost } from "../../../redux/actions";
 
 const Post = (props: any) => {
-  let postId = props.match.params.postId;
+	debugger;
+	let postIdFromUrl = props.match.params.postId;
+	let postIdFromState = props.postDetail.id;
 
   React.useEffect(() => {
-    props.getPost(postId);
+    props.getPost(postIdFromUrl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postId]);
+  }, [postIdFromUrl]);
 
-  return (
+  return postIdFromUrl == postIdFromState ? (
     <div>
       <PostElement postDetail={props.postDetail} />
     </div>
+  ) : (
+    <div>Loading</div>
   );
 };
 
