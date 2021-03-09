@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import ShortPost from "../../components/ShortPost";
 import { getListPost } from "../../redux/actions";
-import s from "./index.module.css";
 import { Button } from "@material-ui/core";
+import List from '@material-ui/core/List';
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
@@ -17,13 +17,13 @@ const MainPage = (props: any) => {
   }, []);
 
   return (
-    <div className={s.mainPage}>
-      <NavLink to="/add-post" className={s.link}>
+    <div>
+      <NavLink to="/add-post">
         <Button size="small" variant="outlined" color="primary">
           Добавить запись
         </Button>
       </NavLink>
-      <ul className={s.shortPostList}>{post}</ul>
+      <List>{post}</List>
     </div>
   );
 };

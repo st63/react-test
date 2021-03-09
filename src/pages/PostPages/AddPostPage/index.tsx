@@ -4,7 +4,6 @@ import { addPost } from "../../../redux/actions";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import s from './index.module.css';
 
 const TitleTextFieldAdapter = ({ input, meta, ...rest }: any) => (
   <TextField
@@ -33,30 +32,19 @@ const AddPost = (props: any) => {
     <Form onSubmit={props.addPost}>
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <div className={s.field}>
-            <Field
-              name="title"
-              component={TitleTextFieldAdapter}
-              type="text"
-            ></Field>
-          </div>
-          <div className={s.field}>
-            <Field
-              name="body"
-              component={BodyTextFieldAdapter}
-              type="text"
-            ></Field>
-          </div>
-          <div className={s.field}>
-            <Button
-              type="submit"
-              size="small"
-              variant="outlined"
-              color="primary"
-            >
-              Отправить
-            </Button>
-          </div>
+          <Field
+            name="title"
+            component={TitleTextFieldAdapter}
+            type="text"
+          ></Field>
+          <Field
+            name="body"
+            component={BodyTextFieldAdapter}
+            type="text"
+          ></Field>
+          <Button type="submit" size="small" variant="outlined" color="primary">
+            Отправить
+          </Button>
         </form>
       )}
     </Form>

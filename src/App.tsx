@@ -6,11 +6,13 @@ import PostContainer from "./pages/PostPages/PostPage";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <CssBaseline />
         <Container maxWidth="sm">
           <Switch>
             <Route path="/post/:postId" component={PostContainer} />

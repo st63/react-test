@@ -1,15 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import s from "./index.module.css";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 
 const ShortPost = (props: any) => {
   return (
-    <li className={s.shortPost}>
-      <NavLink to={`/post/${props.id}`} className={s.link}>
-        <span className={s.id}>{props.id}</span>
-        <span className={s.title}>{props.title}</span>
-      </NavLink>
-    </li>
+    <NavLink to={`/post/${props.id}`}>
+      <ListItem button>
+        {props.id}
+        {props.title}
+      </ListItem>
+    </NavLink>
   );
 };
 
