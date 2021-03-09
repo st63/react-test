@@ -1,5 +1,6 @@
 const GET_POST = "GET_POST";
 const GET_LIST_POSTS = "GET_LIST_POSTS";
+const ADD_POST = "ADD_POST";
 
 let initialState = {
   posts: [
@@ -45,9 +46,15 @@ const postsReducer = (state = initialState, action: any) => {
       };
       return stateCopy;
     case GET_LIST_POSTS:
-		  stateCopy = {
-			...state,
+      stateCopy = {
+        ...state,
         posts: action.posts,
+      };
+      return stateCopy;
+    case ADD_POST:
+      stateCopy = {
+        ...state,
+        postDetail: action.post,
       };
       return stateCopy;
 
