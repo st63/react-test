@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import ShortPost from "../../components/ShortPost";
 import { getListPost } from "../../redux/actions";
 import { Button } from "@material-ui/core";
-import List from '@material-ui/core/List';
+import List from "@material-ui/core/List";
+import Paper from "@material-ui/core/Paper";
+import Link from "@material-ui/core/Link";
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
@@ -17,14 +19,14 @@ const MainPage = (props: any) => {
   }, []);
 
   return (
-    <div>
-      <NavLink to="/add-post">
+    <Paper elevation={3}>
+      <Link to="/add-post" component={NavLink}>
         <Button size="small" variant="outlined" color="primary">
           Добавить запись
         </Button>
-      </NavLink>
+      </Link>
       <List>{post}</List>
-    </div>
+    </Paper>
   );
 };
 
