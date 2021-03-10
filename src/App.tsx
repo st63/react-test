@@ -13,7 +13,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <CssBaseline />
-        <Container maxWidth="sm">
+        <Container maxWidth="md">
           <Switch>
             <Route path="/post/:postId" component={PostContainer} />
             <Route path="/add-post" component={AddPostContainer} />

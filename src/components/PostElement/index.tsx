@@ -2,8 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import styled from "styled-components";
-import { StyledPaper } from "../../pages/MainPage";
+import { StyledPaper } from "../../components/StyledPaper";
 
 const PostElement = (props: any) => {
   return (

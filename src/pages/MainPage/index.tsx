@@ -8,11 +8,7 @@ import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import styled from "styled-components";
-
-export const StyledPaper = styled(Paper)`
-  padding: 2em;
-`;
+import { StyledPaper } from "../../components/StyledPaper";
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
