@@ -10,7 +10,7 @@ const Authorize = (props: any) => {
         <form onSubmit={handleSubmit}>
           <Field name="email" placeholder='Ваш email' component="input" type="text"></Field><br/>
           <Field name="password" placeholder='Придумайте password' component="input" type="text"></Field><br/>
-          <Field name="login" placeholder='Придумайте login' component="input" type="text"></Field><br/>
+          <Field name="userName" placeholder='Придумайте имя пользователя' component="input" type="text"></Field><br/>
           <button type="submit">Зарегистрироваться</button>
         </form>
       )}

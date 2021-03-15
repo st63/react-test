@@ -50,7 +50,7 @@ const AddPost = (props: any) => {
           <StyledAddPostPaper>
             <Form
               onSubmit={(formObj) => {
-                props.addPost(formObj, props.login);
+                props.addPost(formObj);
               }}
             >
               {({ handleSubmit }) => (
@@ -91,9 +91,7 @@ const AddPost = (props: any) => {
 };
 
 let mapStateToProps = (state: any) => {
-  return {
-    login: state.auth.currentUser.login,
-  };
+  return {};
 };
 
 const AddPostContainer = connect(mapStateToProps, { addPost })(AddPost);

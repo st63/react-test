@@ -1,29 +1,30 @@
-const AUTHORIZE = "AUTHORIZE";
+const ADD_USER = "ADD_USER";
 
 let initialState = {
   users: [
     {
       email: "",
       password: "",
-      login: "",
+      userName: "",
+      id: "",
     },
   ],
   currentUser: {
     email: "",
     password: "",
-    login: "",
+    userName: "",
     userId: "",
   },
 };
 
-const authReducer = (state = initialState, action: any) => {
+const usersReducer = (state = initialState, action: any) => {
   let stateCopy;
   switch (action.type) {
-    case AUTHORIZE:
+    case ADD_USER:
       stateCopy = {
         ...state,
-        users: action.authorizeData,
-        currentUser: action.authorizeData,
+        users: action.newUserData,
+        currentUser: action.newUserData,
       };
       return stateCopy;
     default:
@@ -31,4 +32,4 @@ const authReducer = (state = initialState, action: any) => {
   }
 };
 
-export default authReducer;
+export default usersReducer;

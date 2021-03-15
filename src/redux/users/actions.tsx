@@ -1,14 +1,14 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-export const authorize = (formObj: any) => {
+export const addUser = (formObj: any) => {
 	return (dispatch: any) => {
 	  axios("http://localhost:3200/users", {
 		 method: "POST",
 		 data: {
 			email: formObj.email,
 			password: formObj.password,
-			userName: formObj.userName,
+			login: formObj.login,
 			userId: uuidv4(),
 		 },
 		 headers: {
@@ -16,14 +16,14 @@ export const authorize = (formObj: any) => {
 		 },
 	  }).then((response: any) => {
 		 console.log(response.data);
-		 dispatch(authorizeAction(response.data));
+		 dispatch(addUserAction(response.data));
 	  });
 	};
  };
  
 
-export const authorizeAction = (authorizeData: any) => ({
-	type: "AUTHORIZE",
-	authorizeData,
+export const addUserAction = (newUserData: any) => ({
+	type: "ADD_USER",
+	newUserData,
  });
  
