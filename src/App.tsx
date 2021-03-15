@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import AuthorizeContainer from "./pages/AuthorizePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path="/post/:postId" component={PostContainer} />
             <Route path="/add-post" component={AddPostContainer} />
+            <Route path="/authorize" component={AuthorizeContainer} />
             <Route path="/" component={MainPageContainer} />
           </Switch>
         </Container>

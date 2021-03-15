@@ -10,7 +10,8 @@ const PostElement = (props: any) => {
       {props.postDetail.id} {props.postDetail.title}
       <Divider />
       {props.postDetail.body}
-      <Typography component="p">Автор: {props.postDetail.userId}</Typography>
+      <Typography component="p">Автор: {props.postDetail.login}</Typography>
+      <Typography component="p">Дата: {props.postDetail.date}</Typography>
     </StyledPaper>
   );
 };

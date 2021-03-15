@@ -1,0 +1,143 @@
+{
+  "posts": [
+    {
+      "title": "ЗАГОЛОВОК",
+      "body": "ТЕКСТ ПОСТА",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "34е34пе5пу4к",
+      "body": "умаукиауки",
+      "userId": 1,
+      "date": 1615808313909,
+      "id": 2
+    },
+    {
+      "title": "defbvefb",
+      "body": "vefbebf",
+      "userId": "ce728341-9a98-4920-9d48-fb7c3dba64ef",
+      "date": 1615811158506,
+      "id": 3
+    },
+    {
+      "title": "gt4rgh",
+      "body": "fvwv",
+      "userId": "23f37cdb-990f-4561-9e37-0d0571e81936",
+      "date": 1615811263104,
+      "id": 4
+    },
+    {
+      "title": "bvedgbefbt",
+      "body": "efb erb",
+      "userId": "1b31ab18-fff6-4545-9f38-df432e252244",
+      "date": 1615813638715,
+      "id": 5
+    },
+    {
+      "title": "bvedgbefbt",
+      "body": "efb erb",
+      "userId": "2a317fba-2ed3-45da-87c2-a9c6316116a4",
+      "date": 1615813647179,
+      "id": 6
+    },
+    {
+      "title": "ergebt",
+      "body": "bretfbetb",
+      "userId": "75a688a4-5ed8-416d-8c1f-268077088e0b",
+      "date": 1615814247372,
+      "login": "Renat",
+      "id": 7
+    },
+    {
+      "title": "fijefbiuohubehu",
+      "body": "swvklfelkmfd",
+      "userId": "89a04e91-5302-4120-ad50-d2624fba5e0c",
+      "date": 1615814382860,
+      "login": "Stas",
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "email": "",
+      "password": "",
+      "login": "",
+      "id": 1
+    },
+    {
+      "email": "34t34t",
+      "password": "kvnwrvnj",
+      "login": "oefivnowrvn",
+      "id": 2
+    },
+    {
+      "email": "34t34t",
+      "password": "kvnwrvnj",
+      "login": "oefivnowrvn",
+      "id": 3
+    },
+    {
+      "email": "4565",
+      "password": "g4tg",
+      "login": "evef",
+      "userId": "dcc11bcd-c731-4dff-b837-267402c6c5df",
+      "id": 4
+    },
+    {
+      "email": "4565",
+      "password": "g4tg",
+      "login": "evef",
+      "userId": "9669b909-49d6-409f-81e1-f6534511616f",
+      "id": 5
+    },
+    {
+      "email": "4565",
+      "password": "g4tg",
+      "login": "evef",
+      "userId": "fb7d002d-1aea-487c-8e08-4aa8bcd78cfb",
+      "id": 6
+    },
+    {
+      "email": "stanislav",
+      "password": "efkjvnefjvn",
+      "login": "vegfb ",
+      "userId": "f68bb432-278e-4f55-9c37-01d6518d9639",
+      "id": 7
+    },
+    {
+      "email": "dbefv",
+      "userId": "1382756b-d6ce-455b-aaf8-a26fbb218856",
+      "id": 8
+    },
+    {
+      "email": "dbefv",
+      "password": "fefbv",
+      "login": "uerhveurfvh",
+      "userId": "94a5f228-1ad6-41af-849c-ef451e37301f",
+      "id": 9
+    },
+    {
+      "email": "hhh",
+      "password": "ggg",
+      "login": "Stas",
+      "userId": "50b892b6-1063-4bf4-8d46-d1c272a928af",
+      "id": 10
+    },
+    {
+      "login": "Renat",
+      "userId": "b6f77608-0a45-4bd4-9661-79c70efcf156",
+      "id": 11
+    },
+    {
+      "login": "Stas",
+      "userId": "5e2b207f-6415-4b75-bcf0-92cc127248fc",
+      "id": 12
+    },
+    {
+      "login": "45445",
+      "userId": "c0d8038f-9475-4608-8f9b-6f6d9a2ca0ad",
+      "id": 13
+    }
+  ]
+}

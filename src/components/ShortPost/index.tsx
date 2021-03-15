@@ -9,7 +9,7 @@ const ShortPost = (props: any) => {
     <ListItem>
       <Link to={`/post/${props.id}`} component={NavLink}>
         {props.id} {props.title}
-        <Typography component="p">Автор: {props.userId}</Typography>
+        <Typography component="p">Автор: {props.login}</Typography>
       </Link>
     </ListItem>
   );

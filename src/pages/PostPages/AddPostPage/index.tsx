@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Editor } from "../../../components/Editor";
 
 const TitleTextFieldAdapter = ({ input, meta, ...rest }: any) => (
   <TextField {...input} {...rest} fullWidth label="Заголовок" />
@@ -35,55 +36,64 @@ const StyledButton = styled(Button)`
 
 const AddPost = (props: any) => {
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: "100vh" }}
-    >
-      <Grid item xs={12}>
-        <StyledAddPostPaper>
-          <Form onSubmit={props.addPost}>
-            {({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <Field
-                  name="title"
-                  component={TitleTextFieldAdapter}
-                  type="text"
-                ></Field>
-                <Field
-                  name="body"
-                  component={BodyTextFieldAdapter}
-                  type="text"
-                ></Field>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-end"
-                  alignItems="flex-start"
-                >
-                  <StyledButton
-                    type="submit"
-                    size="small"
-                    variant="contained"
-                    color="primary"
+    <div>
+      <Editor />
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid item xs={12}>
+          <StyledAddPostPaper>
+            <Form
+              onSubmit={(formObj) => {
+                props.addPost(formObj, props.login);
+              }}
+            >
+              {({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                  <Field
+                    name="title"
+                    component={TitleTextFieldAdapter}
+                    type="text"
+                  ></Field>
+                  <Field
+                    name="body"
+                    component={BodyTextFieldAdapter}
+                    type="text"
+                  ></Field>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="flex-end"
+                    alignItems="flex-start"
                   >
-                    Создать
-                  </StyledButton>
-                </Grid>
-              </form>
-            )}
-          </Form>
-        </StyledAddPostPaper>
+                    <StyledButton
+                      type="submit"
+                      size="small"
+                      variant="contained"
+                      color="primary"
+                    >
+                      Создать
+                    </StyledButton>
+                  </Grid>
+                </form>
+              )}
+            </Form>
+          </StyledAddPostPaper>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
 let mapStateToProps = (state: any) => {
-  return {};
+  return {
+    login: state.posts.currentUser.login,
+  };
 };
 
 const AddPostContainer = connect(mapStateToProps, { addPost })(AddPost);

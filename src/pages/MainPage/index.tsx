@@ -12,7 +12,13 @@ import { StyledPaper } from "../../components/StyledPaper";
 
 const MainPage = (props: any) => {
   let post = props.posts.map((p: any) => (
-    <ShortPost key={p.id} id={p.id} title={p.title} userId={p.userId} />
+    <ShortPost
+      key={p.id}
+      id={p.id}
+      title={p.title}
+      userId={p.userId}
+      login={p.login}
+    />
   ));
 
   React.useEffect(() => {
@@ -22,6 +28,9 @@ const MainPage = (props: any) => {
 
   return (
     <StyledPaper elevation={3}>
+      <Link to="/authorize" component={NavLink}>
+        {props.login ? props.login : 'Login'}
+      </Link>
       <Typography variant="h4" gutterBottom>
         Список постов
       </Typography>
@@ -38,6 +47,7 @@ const MainPage = (props: any) => {
 let mapStateToProps = (state: any) => {
   return {
     posts: state.posts.posts,
+    login: state.posts.currentUser.login,
   };
 };
 

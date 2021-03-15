@@ -1,6 +1,7 @@
 const GET_POST = "GET_POST";
 const GET_LIST_POSTS = "GET_LIST_POSTS";
 const ADD_POST = "ADD_POST";
+const AUTHORIZE = "AUTHORIZE";
 
 let initialState = {
   posts: [
@@ -26,6 +27,13 @@ let initialState = {
       name: "Третий пост",
     },
   ],
+  users: [
+    {
+      email: "",
+      password: "",
+      login: "",
+    },
+  ],
   postDetail: {
     id: 3,
     title: "Заголовок",
@@ -33,6 +41,12 @@ let initialState = {
     autor: "Ivan",
     name: "Третий пост",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  },
+  currentUser: {
+    email: "",
+    password: "",
+    login: "",
+    userId: "",
   },
 };
 
@@ -57,7 +71,13 @@ const postsReducer = (state = initialState, action: any) => {
         postDetail: action.post,
       };
       return stateCopy;
-
+    case AUTHORIZE:
+      stateCopy = {
+        ...state,
+        users: action.authorizeData,
+        currentUser: action.authorizeData,
+      };
+      return stateCopy;
     default:
       return state;
   }
