@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostElement from "../../../components/PostElement";
-import { getPost } from "../../../redux/actions";
+import { getPost } from "../../../redux/posts/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Post = (props: any) => {

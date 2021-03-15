@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
-import { addPost } from "../../../redux/actions";
+import { addPost } from "../../../redux/posts/actions";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -92,7 +92,7 @@ const AddPost = (props: any) => {
 
 let mapStateToProps = (state: any) => {
   return {
-    login: state.posts.currentUser.login,
+    login: state.auth.currentUser.login,
   };
 };
 

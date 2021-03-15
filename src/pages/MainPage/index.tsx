@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import ShortPost from "../../components/ShortPost";
-import { getListPost } from "../../redux/actions";
+import { getListPost } from "../../redux/posts/actions";
 import { Button } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
@@ -29,7 +29,7 @@ const MainPage = (props: any) => {
   return (
     <StyledPaper elevation={3}>
       <Link to="/authorize" component={NavLink}>
-        {props.login ? props.login : 'Login'}
+        {props.login ? props.login : "Login"}
       </Link>
       <Typography variant="h4" gutterBottom>
         Список постов
@@ -47,7 +47,7 @@ const MainPage = (props: any) => {
 let mapStateToProps = (state: any) => {
   return {
     posts: state.posts.posts,
-    login: state.posts.currentUser.login,
+    login: state.auth.currentUser.login,
   };
 };
 

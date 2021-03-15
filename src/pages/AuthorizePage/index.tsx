@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
-import { authorize } from "../../redux/actions";
+import { authorize } from "../../redux/auth/actions";
 
 const Authorize = (props: any) => {
   return (
