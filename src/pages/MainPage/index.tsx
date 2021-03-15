@@ -28,7 +28,7 @@ const MainPage = (props: any) => {
 
   return (
     <StyledPaper elevation={3}>
-      <Link to="/authorize" component={NavLink}>
+      <Link to="/registr" component={NavLink}>
         {props.userName ? props.userName : "Login"}
       </Link>
       <Typography variant="h4" gutterBottom>
@@ -47,7 +47,7 @@ const MainPage = (props: any) => {
 let mapStateToProps = (state: any) => {
   return {
     posts: state.posts.posts,
-    userName: state.auth.auth.userName,
+    userName: state.auth.currentUserName,
   };
 };
 

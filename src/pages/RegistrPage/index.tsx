@@ -1,35 +1,31 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
-import { getAuth } from '../../redux/auth/actions';
 import { Redirect } from "react-router";
+import { registr } from "../../redux/auth/actions";
 
-const Authorize = (props: any) => {
-	if (props.userName) return  <Redirect to={'/'} />
+const Registr = (props: any) => {
+	if (props.isRegistr) return  <Redirect to={'/authorize'} />
 
   return (
-    <Form
-      onSubmit={(formObj) => {
-			props.getAuth(formObj);
-      }}
-    >
+    <Form onSubmit={props.registr}>
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Field
             name="userName"
-            placeholder="Введите ваше имя пользователя"
+            placeholder="Придумайте имя пользователя"
             component="input"
             type="text"
           ></Field>
           <br />
           <Field
             name="password"
-            placeholder="Введите пароль"
+            placeholder="Придумайте пароль"
             component="input"
             type="text"
           ></Field>
           <br />
-          <button type="submit">Войти</button>
+          <button type="submit">Зарегистрироваться</button>
         </form>
       )}
     </Form>
@@ -38,10 +34,10 @@ const Authorize = (props: any) => {
 
 let mapStateToProps = (state: any) => {
 	return {
-		userName: state.auth.currentUserName,
+	  isRegistr: state.auth.isRegistr,
   };
 };
 
-const AuthorizeContainer = connect(mapStateToProps, {getAuth})(Authorize);
+const RegistrContainer = connect(mapStateToProps, { registr })(Registr);
 
-export default AuthorizeContainer;
+export default RegistrContainer;
