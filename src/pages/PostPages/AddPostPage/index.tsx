@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
-import { addPost } from "../../../redux/posts/actions";
+import { createPostAction } from "../../../redux/posts/actions";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -94,6 +94,6 @@ let mapStateToProps = (state: any) => {
   return {};
 };
 
-const AddPostContainer = connect(mapStateToProps, { addPost })(AddPost);
+const AddPostContainer = connect(mapStateToProps, { addPost: createPostAction })(AddPost);
 
 export default AddPostContainer;
