@@ -1,18 +1,30 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { StyledPaper } from "../../components/StyledPaper";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import styled from "styled-components";
+
+const StyledCard = styled(Card)`
+  width: 500px;
+`;
 
 const PostElement = (props: any) => {
   return (
-    <StyledPaper elevation={3}>
-      {props.postDetail.id} {props.postDetail.title}
-      <Divider />
-      {props.postDetail.body}
-      <Typography component="p">Автор: {props.postDetail.login}</Typography>
-      <Typography component="p">Дата: {props.postDetail.date}</Typography>
-    </StyledPaper>
+    <StyledCard>
+      <CardContent>
+        <Typography color="textSecondary" gutterBottom>
+          № {props.postDetail.id}
+        </Typography>
+        <Typography variant="h5" component="h4">
+          Title: {props.postDetail.title}
+        </Typography>
+        <Typography variant="body1">Text: {props.postDetail.body}</Typography>
+        <Typography color="textSecondary">
+          Created: {props.postDetail.created_at}
+        </Typography>
+      </CardContent>
+    </StyledCard>
   );
 };
 

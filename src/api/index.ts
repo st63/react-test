@@ -20,11 +20,11 @@ export const postList = async (username: string) => {
 }
 
 export const postDetail = async (postId: string) => {
-    const { data } = await request.get(`/posts?id=${postId}`)
+    const { data } = await request.get(`/posts/${postId}`)
     return data
 }
 
 export const addPost = async (postData: any) => {
-    const { data } = await request.post(`/posts`, postData)
+	const { data } = await request.post(`/posts`, postData)
     return data
 }

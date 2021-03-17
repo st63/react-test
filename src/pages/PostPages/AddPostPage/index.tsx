@@ -1,99 +1,71 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
-import { createPostAction } from "../../../redux/posts/actions";
+import { FORM_ERROR } from "final-form";
 import { connect } from "react-redux";
-import { Button } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import styled from "styled-components";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import { Editor } from "../../../components/Editor";
+import {
+  FormContainer,
+  FormHeader,
+  FormBody,
+  TextField,
+  SubmitButton,
+  FormError,
+} from "../../../components/Form";
+import { createPostAction } from "../../../redux/posts/actions";
 
-const TitleTextFieldAdapter = ({ input, meta, ...rest }: any) => (
-  <TextField {...input} {...rest} fullWidth label="Заголовок" />
+const AddPostForm = ({ handleSubmit, submitError }: any) => (
+  <FormContainer>
+    <FormHeader>Напишите пост</FormHeader>
+    <form onSubmit={handleSubmit}>
+      <FormBody>
+        <Field
+          name="title"
+          label="Заголовок"
+          component={TextField}
+          type="text"
+        />
+        <Field name="body" label="Текст" component={TextField} type="text" />
+        <SubmitButton>Добавить</SubmitButton>
+        {submitError && <FormError>{submitError}</FormError>}
+      </FormBody>
+    </form>
+  </FormContainer>
 );
 
-const BodyTextFieldAdapter = ({ input, meta, ...rest }: any) => (
-  <TextField
-    {...input}
-    {...rest}
-    fullWidth
-    label="Текст поста"
-    id="standard-multiline-static"
-    multiline
-    rows={10}
-  />
-);
-
-const StyledAddPostPaper = styled(Paper)`
-  border-radius: 15px;
-  padding: 20px;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 20px 0px 0px 0px;
-`;
-
-const AddPost = (props: any) => {
-  return (
-    <div>
-      <Editor />
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-        style={{ minHeight: "100vh" }}
-      >
-        <Grid item xs={12}>
-          <StyledAddPostPaper>
-            <Form
-              onSubmit={(formObj) => {
-                props.addPost(formObj);
-              }}
-            >
-              {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-                  <Field
-                    name="title"
-                    component={TitleTextFieldAdapter}
-                    type="text"
-                  ></Field>
-                  <Field
-                    name="body"
-                    component={BodyTextFieldAdapter}
-                    type="text"
-                  ></Field>
-                  <Grid
-                    container
-                    direction="row"
-                    justify="flex-end"
-                    alignItems="flex-start"
-                  >
-                    <StyledButton
-                      type="submit"
-                      size="small"
-                      variant="contained"
-                      color="primary"
-                    >
-                      Создать
-                    </StyledButton>
-                  </Grid>
-                </form>
-              )}
-            </Form>
-          </StyledAddPostPaper>
-        </Grid>
-      </Grid>
-    </div>
-  );
+const validate = (values: any) => {
+  const errors: any = {};
+  if (!values.title) {
+    errors.title = "Title required";
+  }
+  if (!values.body) {
+    errors.body = "Text required";
+  }
+  return errors;
 };
 
-let mapStateToProps = (state: any) => {
-  return {};
-};
+class AddPost extends React.Component<any, any> {
+  createPost = async (formData: any) => {
+    try {
 
-const AddPostContainer = connect(mapStateToProps, { addPost: createPostAction })(AddPost);
+      if (!formData) {
+        return { [FORM_ERROR]: "post failed" };
+		 }
+		 
+      this.props.dispatch(createPostAction(formData));
+      this.props.history.push("/");
+    } catch (e) {
+      return { [FORM_ERROR]: e.message };
+    }
+  };
+
+  render() {
+    return (
+      <Form onSubmit={this.createPost} validate={validate}>
+        {AddPostForm}
+      </Form>
+    );
+  }
+}
+
+const AddPostContainer = connect()(AddPost);
 
 export default AddPostContainer;

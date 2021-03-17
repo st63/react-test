@@ -5,8 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import styled from 'styled-components'
+import Button from '@material-ui/core/Button';
 
 const StyledCard = styled(Card)`
   width: 500px;
