@@ -1,32 +1,17 @@
-const REGISTR = "REGISTR";
-const GET_USER_NAME = "GET_USER_NAME";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
-let initialState = {
-  auth: {
-    email: "",
-    password: "",
-    userName: "",
-    userId: "",
-  },
-  isRegistr: false,
-  currentUserName: "",
-};
+const initialState = {};
 
 const authReducer = (state = initialState, action: any) => {
-  let stateCopy;
   switch (action.type) {
-    case REGISTR:
-      stateCopy = {
+    case LOGIN:
+      return  {
         ...state,
-        isRegistr: true,
+        username: action.username
       };
-      return stateCopy;
-    case GET_USER_NAME:
-      stateCopy = {
-        ...state,
-        currentUserName: action.userName,
-      };
-      return stateCopy;
+    case LOGOUT:
+      return initialState;
     default:
       return state;
   }

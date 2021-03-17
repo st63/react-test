@@ -5,25 +5,52 @@ import AddPostContainer from "./pages/PostPages/AddPostPage";
 import PostContainer from "./pages/PostPages/PostPage";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
+import styled, { createGlobalStyle } from 'styled-components'
 import CssBaseline from "@material-ui/core/CssBaseline";
-import RegistrContainer from "./pages/RegistrPage";
-import AuthorizeContainer from "./pages/AuthorizePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage";
+
+const AppContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+`
+
+const Container = styled(Paper)`
+  padding: 30px;
+  min-width: 400px;
+`
+
+const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+  }
+`
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={false}>
         <CssBaseline />
-        <Container maxWidth="md">
-          <Switch>
-            <Route path="/post/:postId" component={PostContainer} />
-            <Route path="/add-post" component={AddPostContainer} />
-            <Route path="/registr" component={RegistrContainer} />
-            <Route path="/authorize" component={AuthorizeContainer} />
-            <Route path="/" component={MainPageContainer} />
-          </Switch>
-        </Container>
+        <GlobalStyle />
+        <AppContainer>
+          <Container elevation={0}>
+            <Switch>
+              <Route path="/post/:postId" component={PostContainer} />
+              <Route path="/add-post" component={AddPostContainer} />
+              <Route path="/registration" component={RegistrationPage} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/logout" component={LogoutPage} />
+              <Route path="/" component={MainPageContainer} />
+            </Switch>
+          </Container>
+        </AppContainer>
       </BrowserRouter>
     </Provider>
   );

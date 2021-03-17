@@ -1,54 +1,42 @@
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import { postDetail, postList, addPost } from '../../api'
 
-export const getPost = (postId: any) => {
+export const getPostAction = (postId: any) => {
   return (dispatch: any) => {
-    axios.get(`http://localhost:3200/posts/${postId}`).then((response: any) => {
-      dispatch(getPostAction(response.data));
+    postDetail(postId).then((response: any) => {
+      dispatch({
+        type: "GET_POST",
+        post: response,
+       });
     });
   };
 };
 
-export const getListPost = () => {
-  return (dispatch: any) => {
-    axios.get(`http://localhost:3200/posts`).then((response: any) => {
-      dispatch(getListPostAction(response.data));
+export const getListPostAction = () => {
+  return (dispatch: any, getState: any) => {
+    const { auth } = getState()
+    postList(auth.username).then((response: any) => {
+      dispatch({
+        type: "GET_LIST_POSTS",
+        posts: response,
+       });
     });
   };
 };
 
-export const addPost = (formObj: any, login: any) => {
-  return (dispatch: any) => {
-    axios("http://localhost:3200/posts", {
-      method: "POST",
-      data: {
-        title: formObj.title,
-        body: formObj.body,
-        userId: uuidv4(),
-        date: Date.now(),
-        login: login,
-      },
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
+export const createPostAction = (formObj: any, login: any) => {
+  return (dispatch: any, getState: any) => {
+    const { auth } = getState()
+    addPost({
+      ...formObj,
+      created_at: Date.now(),
+      username: auth.username,
     }).then((response: any) => {
-      console.log(response.data);
-      dispatch(addPostAction(response.data));
+      dispatch(addPostActionOld(response));
     });
   };
 };
 
-export const getPostAction = (post: any) => ({
-	type: "GET_POST",
-	post,
- });
- 
- export const getListPostAction = (posts: any) => ({
-	type: "GET_LIST_POSTS",
-	posts,
- });
- 
- export const addPostAction = (post: any) => ({
-	type: "ADD_POST",
-	post,
- });
+export const addPostActionOld = (post: any) => ({
+type: "ADD_POST",
+post,
+});

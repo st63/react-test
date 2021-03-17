@@ -2,33 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostElement from "../../../components/PostElement";
-import { getPost } from "../../../redux/posts/actions";
+import { getPostAction } from "../../../redux/posts/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Post = (props: any) => {
-  const postIdFromUrl = props.match.params.postId;
-  const postIdFromState = props.postDetail.id;
+const Post = ({ post, getPost, match }: any) => {
+  const postIdFromUrl = match.params.postId;
 
   React.useEffect(() => {
-    props.getPost(postIdFromUrl);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postIdFromUrl]);
+    getPost(postIdFromUrl);
+  }, [postIdFromUrl, getPost]);
 
-  return postIdFromUrl == postIdFromState ? (
-    <PostElement postDetail={props.postDetail} />
-  ) : (
-    <CircularProgress />
-  );
+  if (!post || post.id != postIdFromUrl) {
+    return <CircularProgress />
+  }
+
+  return <PostElement postDetail={post} />
 };
 
 let mapStateToProps = (state: any) => {
   return {
-    postDetail: state.posts.postDetail,
+    post: state.posts.post,
   };
 };
 
 const withRouterWrap = withRouter(Post);
 
-const PostContainer = connect(mapStateToProps, { getPost })(withRouterWrap);
+const PostContainer = connect(mapStateToProps, { getPost: getPostAction })(withRouterWrap);
 
 export default PostContainer;

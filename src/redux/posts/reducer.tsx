@@ -2,61 +2,28 @@ const GET_POST = "GET_POST";
 const GET_LIST_POSTS = "GET_LIST_POSTS";
 const ADD_POST = "ADD_POST";
 
-let initialState = {
-  posts: [
-    {
-      id: 1,
-      title: "Заголовок",
-      date: 1614771433162,
-      autor: "Stas",
-      name: "Первый пост",
-    },
-    {
-      id: 2,
-      title: "Заголовок",
-      date: 1614775378326,
-      autor: "Andrey",
-      name: "Второй пост",
-    },
-    {
-      id: 3,
-      title: "Заголовок",
-      date: 1614775413091,
-      autor: "Ivan",
-      name: "Третий пост",
-    },
-  ],
-  postDetail: {
-    id: 3,
-    title: "Заголовок",
-    date: 1614775413091,
-    autor: "Ivan",
-    name: "Третий пост",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  },
+const initialState = {
+  items: [],
+  post: {},
 };
 
 const postsReducer = (state = initialState, action: any) => {
-  let stateCopy;
   switch (action.type) {
     case GET_POST:
-      stateCopy = {
+      return {
         ...state,
-        postDetail: action.post,
+        post: action.post,
       };
-      return stateCopy;
     case GET_LIST_POSTS:
-      stateCopy = {
+      return {
         ...state,
-        posts: action.posts,
+        items: action.posts,
       };
-      return stateCopy;
     case ADD_POST:
-      stateCopy = {
+      return {
         ...state,
-        postDetail: action.post,
+        post: action.post,
       };
-      return stateCopy;
 
     default:
       return state;

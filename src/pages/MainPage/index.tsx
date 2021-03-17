@@ -1,56 +1,58 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import ShortPost from "../../components/ShortPost";
-import { getListPost } from "../../redux/posts/actions";
-import { Button } from "@material-ui/core";
+import { getListPostAction } from "../../redux/posts/actions";
 import List from "@material-ui/core/List";
-import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import { StyledPaper } from "../../components/StyledPaper";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { FormHeader, FormContainer, FormBody } from "../../components/Form";
 
-const MainPage = (props: any) => {
-  let post = props.posts.map((p: any) => (
-    <ShortPost
-      key={p.id}
-      id={p.id}
-      title={p.title}
-      userId={p.userId}
-      login={p.login}
-    />
-  ));
+const StyledLink = ({ to, ...props }: any) => (
+  <Button color="primary" component={Link} to={to} {...props}>
+    {props.children}
+  </Button>
+)
 
+const MainPage = ({ username, getListPost, history, posts }: any) => {
   React.useEffect(() => {
-    props.getListPost();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (username) {
+      getListPost(username);
+    }
+  }, [getListPost, username]);
+
+  if (!username) {
+    history.push('/login')
+  }
 
   return (
-    <StyledPaper elevation={3}>
-      <Link to="/registr" component={NavLink}>
-        {props.userName ? props.userName : "Login"}
-      </Link>
-      <Typography variant="h4" gutterBottom>
-        Список постов
-      </Typography>
-      <Link to="/add-post" component={NavLink}>
-        <Button size="small" variant="outlined" color="primary">
-          Добавить запись
-        </Button>
-      </Link>
-      <List>{post}</List>
-    </StyledPaper>
+    <FormContainer>
+      <FormHeader>
+        Список постов от {username}
+      </FormHeader>
+      <FormBody>
+        <ButtonGroup>
+          <StyledLink to="/logout" color="secondary">
+            Выйти
+          </StyledLink>
+          <StyledLink to="/add-post">
+            Добавить запись
+          </StyledLink>
+        </ButtonGroup>
+        <List>{posts.map(ShortPost)}</List>
+      </FormBody>
+    </FormContainer>
   );
 };
 
 let mapStateToProps = (state: any) => {
   return {
-    posts: state.posts.posts,
-    userName: state.auth.currentUserName,
+    posts: state.posts.items,
+    username: state.auth.username,
   };
 };
 
-const MainPageContainer = connect(mapStateToProps, { getListPost })(MainPage);
+const MainPageContainer = compose<any>(connect(mapStateToProps, { getListPost: getListPostAction }), withRouter)(MainPage);
 
 export default MainPageContainer;
