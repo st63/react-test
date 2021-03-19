@@ -11,7 +11,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
-import "./App.css";
 import { PersistGate } from "redux-persist/integration/react";
 
 const AppContainer = styled.div`

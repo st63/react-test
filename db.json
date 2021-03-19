@@ -1,25 +1,11 @@
 {
   "posts": [
     {
-      "title": "test",
-      "body": "asdasd",
-      "created_at": 1615909041948,
+      "body": "<p><strong>Audi </strong><strong>A6 allroad quattr</strong>o — <em>уникальный</em> автомобиль. Он сочетает в себе такие преимущества универсала Avant, как комфорт и широкие возможности <u>трансформации. </u></p><figure><span><img src=\"https://i.artfile.ru/s/1520851_070720_43_ArtFile_ru.jpg\"/></span></figure><p></p>",
+      "title": "Audi",
+      "created_at": 1616164932094,
       "username": "admin",
       "id": 1
-    },
-    {
-      "body": "<p></p><figure> </figure><p></p>",
-      "title": "Draft.js",
-      "created_at": 1616151934083,
-      "username": "admin",
-      "id": 2
-    },
-    {
-      "title": "rwgvbwrbgv",
-      "body": "<p></p><figure> </figure><p></p>",
-      "created_at": 1616152733935,
-      "username": "admin",
-      "id": 3
     }
   ],
   "users": [

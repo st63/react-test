@@ -15,6 +15,11 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import { convertToHTML } from "draft-convert";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import styled from "styled-components";
+
+const EditorContainer = styled.div`
+  width: 500px;
+`;
 
 export class AddPostEditor extends React.Component<any, any> {
   state = {
@@ -27,7 +32,18 @@ export class AddPostEditor extends React.Component<any, any> {
 
   convertContentToHTML = () => {
     if (this.state.editorState) {
-      const currentContentAsHTML = convertToHTML(
+      const currentContentAsHTML = convertToHTML({
+        entityToHTML: (entity, originalText) => {
+				if (entity.type === "IMAGE") {
+            return (
+              <span>
+						<img src={entity.data.src} />
+              </span>
+            );
+          }
+          return originalText;
+        },
+      })(
         // @ts-ignore
         this.state.editorState.getCurrentContent()
       );
@@ -40,15 +56,9 @@ export class AddPostEditor extends React.Component<any, any> {
 
   render() {
     return (
-      <Editor
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        toolbarClassName="toolbar-class"
-        toolbar={{
-          image: { uploadCallback: true },
-        }}
-        onEditorStateChange={this.onEditorStateChange}
-      />
+      <EditorContainer>
+        <Editor onEditorStateChange={this.onEditorStateChange} />
+      </EditorContainer>
     );
   }
 }
