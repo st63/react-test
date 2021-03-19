@@ -11,6 +11,29 @@ import {
   FormError,
 } from "../../../components/Form";
 import { createPostAction } from "../../../redux/posts/actions";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from 'draft-js';
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+export class AddPostEditor extends React.Component<any, any> {
+  onEditorStateChange = (e: any) => {
+	  console.log(this.props);
+  };
+
+  render() {
+    console.log(this.props);
+    return (
+      <div>
+        <Editor
+          toolbarClassName="toolbarClassName"
+          wrapperClassName="wrapperClassName"
+          editorClassName="editorClassName"
+          onChange={this.onEditorStateChange}
+        />
+      </div>
+    );
+  }
+}
 
 const AddPostForm = ({ handleSubmit, submitError }: any) => (
   <FormContainer>
@@ -23,7 +46,7 @@ const AddPostForm = ({ handleSubmit, submitError }: any) => (
           component={TextField}
           type="text"
         />
-        <Field name="body" label="Текст" component={TextField} type="text" />
+        <Field name="body" component={AddPostEditor} type="text" />
         <SubmitButton>Добавить</SubmitButton>
         {submitError && <FormError>{submitError}</FormError>}
       </FormBody>
@@ -45,11 +68,10 @@ const validate = (values: any) => {
 class AddPost extends React.Component<any, any> {
   createPost = async (formData: any) => {
     try {
-
       if (!formData) {
         return { [FORM_ERROR]: "post failed" };
-		 }
-		 
+      }
+
       this.props.dispatch(createPostAction(formData));
       this.props.history.push("/");
     } catch (e) {
