@@ -12,25 +12,43 @@ import {
 } from "../../../components/Form";
 import { createPostAction } from "../../../redux/posts/actions";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from 'draft-js';
+import { EditorState } from "draft-js";
+import { convertToHTML } from "draft-convert";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export class AddPostEditor extends React.Component<any, any> {
-  onEditorStateChange = (e: any) => {
-	  console.log(this.props);
+  state = {
+    editorState: EditorState.createEmpty(),
+  };
+
+  onEditorStateChange = (editorState: any) => {
+    this.setState({ editorState }, this.convertContentToHTML);
+  };
+
+  convertContentToHTML = () => {
+    if (this.state.editorState) {
+      const currentContentAsHTML = convertToHTML(
+        // @ts-ignore
+        this.state.editorState.getCurrentContent()
+      );
+
+      if (this.props.input && this.props.input.onChange) {
+        this.props.input.onChange(currentContentAsHTML);
+      }
+    }
   };
 
   render() {
-    console.log(this.props);
     return (
-      <div>
-        <Editor
-          toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          onChange={this.onEditorStateChange}
-        />
-      </div>
+      <Editor
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+        toolbar={{
+          image: { uploadCallback: true },
+        }}
+        onEditorStateChange={this.onEditorStateChange}
+      />
     );
   }
 }

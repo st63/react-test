@@ -19,7 +19,7 @@ const PostElement = (props: any) => {
         <Typography variant="h5" component="h4">
           Title: {props.postDetail.title}
         </Typography>
-        <Typography variant="body1">Text: {props.postDetail.body}</Typography>
+        <div dangerouslySetInnerHTML={{ __html: props.postDetail.body }}></div>
         <Typography color="textSecondary">
           Created: {props.postDetail.created_at}
         </Typography>

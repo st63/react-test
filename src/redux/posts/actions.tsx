@@ -26,11 +26,14 @@ export const getListPostAction = () => {
 export const createPostAction = (formObj: any) => {
   return (dispatch: any, getState: any) => {
     const { auth } = getState();
+    if (!auth.username) {
+      throw new Error("auth failed");
+    }
     addPost({
       ...formObj,
       created_at: Date.now(),
       username: auth.username,
-	 }).then((response: any) => {
+    }).then((response: any) => {
       dispatch(addPostActionOld(response));
     });
   };
